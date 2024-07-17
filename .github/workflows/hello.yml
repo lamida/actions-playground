@@ -12,7 +12,8 @@ jobs:
 
       - name: Run Docker Compose
         run: |
+          docker network create my-network
           docker network ls
-          docker run --name my-nginx --network-alias your-nginx nginx
-          docker run --rm curlimages/curl:8.8.0 -L -v my-nginx
-          docker run --rm curlimages/curl:8.8.0 -L -v your-nginx
+          docker run --name my-nginx --network-alias your-nginx --network my-network nginx
+          docker run --rm --network my-network curlimages/curl:8.8.0 -L -v my-nginx
+          docker run --rm --network my-network curlimages/curl:8.8.0 -L -v your-nginx
