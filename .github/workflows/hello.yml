@@ -16,7 +16,7 @@ jobs:
           docker run -d --name my-nginx --network-alias your-nginx --network my-network nginx
           docker run --rm --network my-network curlimages/curl:8.8.0 -L -v my-nginx
           docker run --rm --network my-network curlimages/curl:8.8.0 -L -v your-nginx
-          docker run --rm --network my-network tutum/dnsutils dig my-nginx
-          docker run --rm --network my-network tutum/dnsutils dig your-nginx
+          docker run --network my-network massenz/dnsutils:2.4.0 nslookup my-nginx
+          docker run --network my-network massenz/dnsutils:2.4.0 nslookup your-nginx
           docker network inspect my-network
           docker inspect my-nginx
