@@ -13,10 +13,10 @@ jobs:
           docker --version
           docker network create my-network
           docker network ls
-          docker run -d --name my-nginx --network-alias test-e2e-metrics-enterprise-9977927909-1-metrics-enterprise-graphite --network my-network nginx
+          docker run -d --name my-nginx --network-alias test-e2e-metrics-enterprise-9977927909-1-metrics-enterprise-123 --network my-network nginx
           docker run --rm --network my-network curlimages/curl:8.8.0 -L -v my-nginx
-          docker run --rm --network my-network curlimages/curl:8.8.0 -L -v test-e2e-metrics-enterprise-9977927909-1-metrics-enterprise-graphite
+          docker run --rm --network my-network curlimages/curl:8.8.0 -L -v test-e2e-metrics-enterprise-9977927909-1-metrics-enterprise-123
           docker run --network my-network massenz/dnsutils:2.4.0 nslookup my-nginx
-          docker run --network my-network massenz/dnsutils:2.4.0 nslookup test-e2e-metrics-enterprise-9977927909-1-metrics-enterprise-graphite
+          docker run --network my-network massenz/dnsutils:2.4.0 nslookup test-e2e-metrics-enterprise-9977927909-1-metrics-enterprise-123
           docker network inspect my-network
           docker inspect my-nginx
