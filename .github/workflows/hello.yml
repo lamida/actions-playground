@@ -12,6 +12,7 @@ jobs:
 
       - name: Run Docker Compose
         run: |
+          docker --version
           docker network create my-network
           docker network ls
           docker run -d --name my-nginx --network-alias your-nginx --network my-network nginx
