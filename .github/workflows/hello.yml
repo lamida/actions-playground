@@ -14,6 +14,6 @@ jobs:
         run: |
           docker network create my-network
           docker network ls
-          docker run --name my-nginx --network-alias your-nginx --network my-network nginx
+          docker run -d --name my-nginx --network-alias your-nginx --network my-network nginx
           docker run --rm --network my-network curlimages/curl:8.8.0 -L -v my-nginx
           docker run --rm --network my-network curlimages/curl:8.8.0 -L -v your-nginx
