@@ -7,7 +7,7 @@ jobs:
   job-one:
     runs-on: ubuntu-latest
     steps:
-      - name: Detect changes
+      - name: Detect changes put something
         run: |
           echo "OUTPUT=something"
           if [ -z "$OUTPUT" ]; then exit 78; fi
@@ -15,9 +15,8 @@ jobs:
   job-two:
     runs-on: ubuntu-latest
     steps:
-      - name: Detect changes
+      - name: Detect changes no changes
         run: |
-          echo "OUTPUT="
           if [ -z "$OUTPUT" ]; then exit 78; fi
     
   job-depends-one:
