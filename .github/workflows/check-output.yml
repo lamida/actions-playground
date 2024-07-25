@@ -1,0 +1,19 @@
+name: Hello workflow
+
+on:
+  push:
+
+jobs:
+  job-one:
+    runs-on: ubuntu-latest
+    steps:
+      name: Detect changes
+      run: |
+        echo "OUTPUT=something"
+        if [ -z "$OUTPUT" ]; then exit 78; fi
+    
+  job-two:
+    runs-on: ubuntu-latest
+    needs [job-one]
+    steps:
+      run: echo I am here
