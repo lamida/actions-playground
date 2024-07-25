@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Detect changes put something
         run: |
-          echo "OUTPUT=something"
+          OUTPUT=something
           if [ -z "$OUTPUT" ]; then exit 78; fi
   
   job-two:
@@ -17,6 +17,7 @@ jobs:
     steps:
       - name: Detect changes no changes
         run: |
+          OUTPUT=
           if [ -z "$OUTPUT" ]; then exit 78; fi
     
   job-depends-one:
