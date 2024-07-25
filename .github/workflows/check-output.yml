@@ -44,7 +44,7 @@ jobs:
 
   job-depends-three:
     runs-on: ubuntu-latest
-    needs: [job-two]
+    needs: [job-three]
     steps:
       - run: |
           echo I should be here because of exit 0
