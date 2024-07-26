@@ -10,7 +10,7 @@ jobs:
       - name: Detect changes put changes
         id: detect
         run: |
-          echo changes=yes >> "GITHUB_OUTPUT"
+          echo changes=yes >> "$GITHUB_OUTPUT"
           
   
   job-two:
@@ -19,7 +19,7 @@ jobs:
       - name: Detect changes no changes
         id: detect
         run: |
-          echo changes= >> "GITHUB_OUTPUT"
+          echo changes= >> "$GITHUB_OUTPUT"
 
   job-three:
     runs-on: ubuntu-latest
