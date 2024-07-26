@@ -33,25 +33,29 @@ jobs:
     name: job one must succeed
     runs-on: ubuntu-latest
     needs: [job-one]
-    if: ${{ needs.job-one.detect.outputs.changes != '' }}
+    #if: ${{ needs.job-one.detect.outputs.changes != '' }}
     steps:
       - run: |
           echo I am here
+          echo ${{ needs.job-one.detect.outputs.changes }}
 
   job-depends-two:
     name: job two must be skipped
     runs-on: ubuntu-latest
     needs: [job-two]
-    if: ${{ needs.job-two.detect.outputs.changes != '' }}
+    #if: ${{ needs.job-two.detect.outputs.changes != '' }}
     steps:
       - run: |
           echo I Shouldn't be here
+          echo ${{ needs.job-two.detect.outputs.changes }}
+
 
   job-depends-three:
-    name: job three must succeed too
+    name: job three must be skipped too
     runs-on: ubuntu-latest
     needs: [job-three]
-    if: ${{ needs.job-three.detect.outputs.changes != '' }}
+    #if: ${{ needs.job-three.detect.outputs.changes != '' }}
     steps:
       - run: |
           echo I shouldn't be here too
+          echo ${{ needs.job-three.detect.outputs.changes }}
