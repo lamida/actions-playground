@@ -30,7 +30,7 @@ jobs:
     name: job one must succeed
     runs-on: ubuntu-latest
     needs: [job-one]
-    if: needs.job-one.changes != ''
+    if: needs.job-one.outputs.changes != ''
     steps:
       - run: |
           echo I am here
@@ -39,7 +39,7 @@ jobs:
     name: job two must be skipped
     runs-on: ubuntu-latest
     needs: [job-two]
-    if: needs.job-two.changes != ''
+    if: needs.job-two.outputs.changes != ''
     steps:
       - run: |
           echo I Shouldn't be here
@@ -48,7 +48,7 @@ jobs:
     name: job three must succeed too
     runs-on: ubuntu-latest
     needs: [job-three]
-    if: needs.job-three.changes != ''
+    if: needs.job-three.outputs.changes != ''
     steps:
       - run: |
           echo I shouldn't be here too
