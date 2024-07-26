@@ -38,6 +38,8 @@ jobs:
       - run: |
           echo I am here
           echo ${{ needs.job-one.detect.outputs.changes }}
+          echo ${{ needs.job-one.outputs.changes }}
+
 
   job-depends-two:
     name: job two must be skipped
@@ -46,8 +48,10 @@ jobs:
     #if: ${{ needs.job-two.detect.outputs.changes != '' }}
     steps:
       - run: |
-          echo I Shouldn't be here
+          echo I Shouldnt be here
           echo ${{ needs.job-two.detect.outputs.changes }}
+          echo ${{ needs.job-one.outputs.changes }}
+
 
 
   job-depends-three:
@@ -57,5 +61,7 @@ jobs:
     #if: ${{ needs.job-three.detect.outputs.changes != '' }}
     steps:
       - run: |
-          echo I shouldn't be here too
+          echo I shouldnt be here too
           echo ${{ needs.job-three.detect.outputs.changes }}
+          echo ${{ needs.job-one.outputs.changes }}
+
