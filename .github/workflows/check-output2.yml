@@ -21,8 +21,8 @@ jobs:
       - name: foo
         run: |
           echo ${{ needs.job-one.outputs.changes }}
-          echo ${{ startsWith(github.ref, 'refs/head/main') }}
-          echo ${{ startsWith(github.ref, 'refs/head/main') && needs.job-one.outputs.changes != ''  }}
+          echo ${{ startsWith(github.ref, 'refs/heads/main') }}
+          echo ${{ startsWith(github.ref, 'refs/heads/main') && needs.job-one.outputs.changes != ''  }}
        
   
   job-two:
@@ -49,7 +49,7 @@ jobs:
     name: job one must succeed
     runs-on: ubuntu-latest
     needs: [job-one]
-    if:  startsWith(github.ref, 'refs/head/main') && needs.job-one.outputs.changes != '' 
+    if:  startsWith(github.ref, 'refs/heads/main') && needs.job-one.outputs.changes != '' 
     steps:
       - run: |
           echo I am here
@@ -61,7 +61,7 @@ jobs:
     name: job two must be skipped
     runs-on: ubuntu-latest
     needs: [job-two]
-    if:  startsWith(github.ref, 'refs/head/main') && needs.job-two.outputs.changes != '' 
+    if:  startsWith(github.ref, 'refs/heads/main') && needs.job-two.outputs.changes != '' 
     steps:
       - run: |
           echo I Shouldnt be here
@@ -74,7 +74,7 @@ jobs:
     name: job three must be skipped too
     runs-on: ubuntu-latest
     needs: [job-three]
-    if:  startsWith(github.ref, 'refs/head/main') && needs.job-three.outputs.changes != '' 
+    if:  startsWith(github.ref, 'refs/heads/main') && needs.job-three.outputs.changes != '' 
     steps:
       - run: |
           echo I shouldnt be here too
