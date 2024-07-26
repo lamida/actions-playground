@@ -6,6 +6,8 @@ on:
 jobs:
   job-one:
     runs-on: ubuntu-latest
+    outputs:
+      changes: ${{ steps.detect.outputs.changes }}
     steps:
       - name: Detect changes put changes
         id: detect
@@ -15,6 +17,8 @@ jobs:
   
   job-two:
     runs-on: ubuntu-latest
+    outputs:
+      changes: ${{ steps.detect.outputs.changes }}
     steps:
       - name: Detect changes no changes
         id: detect
@@ -23,6 +27,8 @@ jobs:
 
   job-three:
     runs-on: ubuntu-latest
+    outputs:
+      changes: ${{ steps.detect.outputs.changes }}
     steps:
       - name: Detect changes no output
         id: detect
