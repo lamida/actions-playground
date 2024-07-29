@@ -8,8 +8,10 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Run composite
-        uses: ./.github/actions/hell-composite
+        uses: ./.github/actions/hello-composite
         with: 
           input_message: "cruel world"
         env:
