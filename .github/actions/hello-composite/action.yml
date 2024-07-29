@@ -10,8 +10,10 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: echo ${{ github.event.pull_request.base.sha }}
+    - run: echo $GITHUB_SHA
       shell: bash
+      env: 
+        GITHUB_SHA: ${{ github.event.pull_request.base.sha }}
     - run: echo ${{ inputs.input_message }}
       shell: bash
     - run: echo $INPUT_ENV
