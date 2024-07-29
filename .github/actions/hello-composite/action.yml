@@ -14,5 +14,7 @@ runs:
       shell: bash
     - run: echo $INPUT_ENV
       shell: bash
+    - run: echo $HAHA
+      shell: bash
     - run: echo ${{ env.HAHA }}
       shell: bash
