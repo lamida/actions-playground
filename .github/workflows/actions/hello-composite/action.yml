@@ -1,0 +1,14 @@
+name: 'End to end test'
+description: 'Running end to end test'
+inputs:
+  input_message:
+    description: golang version
+    required: false
+    default: hello world
+runs:
+  using: 'composite'
+  steps:
+    - run: echo ${ inputs.input_message }
+      shell: bash
+    - run: echo $INPUT_ENV
+      shell: bash

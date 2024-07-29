@@ -1,0 +1,14 @@
+name: Test composite
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello:
+    - name: Run composite
+      uses: ./.github/actions/hell-composite
+      with: 
+        input_message: "cruel world"
+      env:
+        INPUT_ENV: "nice world"
