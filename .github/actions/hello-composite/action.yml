@@ -1,5 +1,7 @@
 name: 'End to end test'
 description: 'Running end to end test'
+env:
+  HAHA: smile
 inputs:
   input_message:
     description: golang version
@@ -11,4 +13,6 @@ runs:
     - run: echo ${{ inputs.input_message }}
       shell: bash
     - run: echo $INPUT_ENV
+      shell: bash
+    - run: echo $HAHA
       shell: bash
