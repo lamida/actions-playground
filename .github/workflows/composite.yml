@@ -6,9 +6,10 @@ on:
 
 jobs:
   hello:
-    - name: Run composite
-      uses: ./.github/actions/hell-composite
-      with: 
-        input_message: "cruel world"
-      env:
-        INPUT_ENV: "nice world"
+    steps:
+      - name: Run composite
+        uses: ./.github/actions/hell-composite
+        with: 
+          input_message: "cruel world"
+        env:
+          INPUT_ENV: "nice world"
