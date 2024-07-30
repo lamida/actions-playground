@@ -5,37 +5,37 @@ on:
       - master
   pull_request:
 
-  jobs:
-    detect-changes:
-      name: Check if there is any changes in the binary
-      runs-on: ubuntu-latest
-      outputs:
-        binary_changes: ${{ steps.detect-changes.outputs.binary_changes }}
-      steps:
+jobs:
+  detect-changes:
+    name: Check if there is any changes in the binary
+    runs-on: ubuntu-latest
+    outputs:
+      binary_changes: ${{ steps.detect-changes.outputs.binary_changes }}
+    steps:
+    - name: Detect changes
+      id: detect-changes
+      # The output need to be wrapped with double quote so that we can pipe it to $GITHUB_OUTPUT. Because of this,
+      # if there is no changes, the output is double quote of empty string `""` instead of just empty string.
+      run: |
+        if [ -z $GITHUB_BASE_SHA ]; then \
+        echo "this is not pull request, skipping detect changes"
+        else \
+        echo Detect changes against base branch with sha: $GITHUB_BASE_SHA 
+        OUTPUT=$(echo "some changes") \
+        echo binary_changes=\"$OUTPUT\" >> "$GITHUB_OUTPUT" \
+        fi
+      env:
+        GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        
+  tb-detect-changes:
+    name: Check if there is any changes in the binary
+    runs-on: ubuntu-latest
+    needs: [detect-changes]
+    steps:
       - name: Detect changes
-        id: detect-changes
-        # The output need to be wrapped with double quote so that we can pipe it to $GITHUB_OUTPUT. Because of this,
-        # if there is no changes, the output is double quote of empty string `""` instead of just empty string.
         run: |
-          if [ -z $GITHUB_BASE_SHA ]; then \
-          echo "this is not pull request, skipping detect changes"
-          else \
-          echo Detect changes against base branch with sha: $GITHUB_BASE_SHA 
-          OUTPUT=$(echo "some changes") \
-          echo binary_changes=\"$OUTPUT\" >> "$GITHUB_OUTPUT" \
-          fi
+          echo "I am run"
+          echo "Output was \"$CHANGES\""
         env:
-          GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          
-    tb-detect-changes:
-      name: Check if there is any changes in the binary
-      runs-on: ubuntu-latest
-      needs: [detect-changes]
-      steps:
-        - name: Detect changes
-          run: |
-            echo "I am run"
-            echo "Output was \"$CHANGES\""
-          env:
-            CHANGES: ${{ needs.detect-changes.outputs.binary_changes }}
+          CHANGES: ${{ needs.detect-changes.outputs.binary_changes }}
       
