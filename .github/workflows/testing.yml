@@ -10,6 +10,8 @@ jobs:
     name: Check git
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: See gitlob
         run: |
           echo "1"
