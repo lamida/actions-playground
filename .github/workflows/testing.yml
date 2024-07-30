@@ -7,16 +7,19 @@ on:
 
 jobs:
   foo:
-    - name: See gitlob
-      run: |
-        echo "1"
-        git show HEAD
-        echo "2"
-        git show HEAD^1
-        echo "3"
-        git show $BEFORE
-        echo "4"
-        git show $BASE_REF
-      env: 
-        BEFORE: ${{ github.event.before }}
-        BASE_REF: ${{ github.event.pull_request.base.sha }}
+    name: Check git
+    runs-on: ubuntu-latest
+    steps:
+      - name: See gitlob
+        run: |
+          echo "1"
+          git show HEAD
+          echo "2"
+          git show HEAD^1
+          echo "3"
+          git show $BEFORE
+          echo "4"
+          git show $BASE_REF
+        env: 
+          BEFORE: ${{ github.event.before }}
+          BASE_REF: ${{ github.event.pull_request.base.sha }}
