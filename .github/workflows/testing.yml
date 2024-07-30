@@ -2,7 +2,6 @@ name: Show commit
 on:
   push:
     branches:
-      - testing
       - main
   pull_request:
 
