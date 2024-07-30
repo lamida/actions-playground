@@ -5,12 +5,13 @@ on:
       - master
   pull_request:
 
-  detect-changes:
-    name: Check if there is any changes in the binary
-    runs-on: ubuntu-latest
-    outputs:
-      binary_changes: ${{ steps.detect-changes.outputs.binary_changes }}
-    steps:
+  jobs:
+    detect-changes:
+      name: Check if there is any changes in the binary
+      runs-on: ubuntu-latest
+      outputs:
+        binary_changes: ${{ steps.detect-changes.outputs.binary_changes }}
+      steps:
       - name: Detect changes
         id: detect-changes
         # The output need to be wrapped with double quote so that we can pipe it to $GITHUB_OUTPUT. Because of this,
@@ -25,15 +26,16 @@ on:
           fi
         env:
           GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}
-  tb-detect-changes:
-    name: Check if there is any changes in the binary
-    runs-on: ubuntu-latest
-    needs: [detect-changes]
-    steps:
-      - name: Detect changes
-        run: |
-          echo "I am run"
-          echo "Output was \"$CHANGES\""
-        env:
-          CHANGES: ${{ needs.detect-changes.outputs.binary_changes }}
-    
+          
+    tb-detect-changes:
+      name: Check if there is any changes in the binary
+      runs-on: ubuntu-latest
+      needs: [detect-changes]
+      steps:
+        - name: Detect changes
+          run: |
+            echo "I am run"
+            echo "Output was \"$CHANGES\""
+          env:
+            CHANGES: ${{ needs.detect-changes.outputs.binary_changes }}
+      
