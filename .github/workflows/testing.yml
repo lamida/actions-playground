@@ -15,16 +15,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: See gitlob
+      - name: See gitlog
         run: |
           echo 1 git show HEAD
           git show HEAD
           echo 2 git show HEAD^1
           git show HEAD^1
-          echo 3 git show $BEFORE
-          git show $BEFORE
+          echo 3 git show $BASE_PR
+          git show $BASE_PR
           echo 4 git show $BASE_REF
           git show $BASE_REF
+          echo 5 git show $BEFORE
+          git show $BEFORE
         env: 
           BEFORE: ${{ github.event.before }}
-          BASE_REF: ${{ github.event.pull_request.base.sha }}
+          BASE_PR: ${{ github.event.pull_request.base.sha }}
+          BASE_REF: ${{ github.event.pull_request.base.sha || github.event.before }}
