@@ -17,14 +17,16 @@ jobs:
       # The output need to be wrapped with double quote so that we can pipe it to $GITHUB_OUTPUT. Because of this,
       # if there is no changes, the output is double quote of empty string `""` instead of just empty string.
       run: |
-        if [[ -z $GITHUB_BASE_SHA ]]; then 
-          echo "this is not pull request, skipping detect changes" 
-        else 
-          echo Detect changes against base branch with sha: $GITHUB_BASE_SHA 
-          OUTPUT=$(echo "some changes") 
-          echo binary_changes=\"$OUTPUT\" >> "$GITHUB_OUTPUT" 
-        fi
+         REF=$GITHUB_BASE_SHA
+          if [[ -z $GITHUB_BASE_SHA ]]; then 
+            echo "This is not a pull request, skipping detect changes" 
+            REF="HEAD^1"
+          fi
+          echo "Detect changes against REF: $REF"
+          OUTPUT="some changes $REF"
+          echo binary_changes=\"$OUTPUT\" >> "$GITHUB_OUTPUT"
       env:
+        GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}
         GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}
         
   tb-detect-changes:
