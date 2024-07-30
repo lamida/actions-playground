@@ -18,17 +18,17 @@ jobs:
       # if there is no changes, the output is double quote of empty string `""` instead of just empty string.
       run: |
         if [ -z $GITHUB_BASE_SHA ]; then \
-        echo "this is not pull request, skipping detect changes"
+          echo "this is not pull request, skipping detect changes" \
         else \
-        echo Detect changes against base branch with sha: $GITHUB_BASE_SHA 
-        OUTPUT=$(echo "some changes") \
-        echo binary_changes=\"$OUTPUT\" >> "$GITHUB_OUTPUT" \
+        echo Detect changes against base branch with sha: $GITHUB_BASE_SHA \
+          OUTPUT=$(echo "some changes") \
+          echo binary_changes=\"$OUTPUT\" >> "$GITHUB_OUTPUT" \
         fi
       env:
         GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}
         
   tb-detect-changes:
-    name: Check if there is any changes in the binary
+    name: Troubleshoot
     runs-on: ubuntu-latest
     needs: [detect-changes]
     steps:
