@@ -27,7 +27,6 @@ jobs:
           echo binary_changes=\"$OUTPUT\" >> "$GITHUB_OUTPUT"
       env:
         GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}
         
   tb-detect-changes:
     name: Troubleshoot
