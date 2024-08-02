@@ -1,0 +1,22 @@
+name: Hello workflow
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Docker Compose
+        run: |
+          docker --version
+          docker network create my-network
+          docker network ls
+          docker run -d --name my-nginx --network-alias test-e2e-metrics-enterprise-9977927909-1-metrics-enterprise-1234 --network my-network nginx
+          docker run --rm --network my-network curlimages/curl:8.8.0 -L -v my-nginx
+          docker run --rm --network my-network curlimages/curl:8.8.0 -L -v test-e2e-metrics-enterprise-9977927909-1-metrics-enterprise-1234
+          docker run --network my-network massenz/dnsutils:2.4.0 nslookup my-nginx
+          docker run --network my-network massenz/dnsutils:2.4.0 nslookup test-e2e-metrics-enterprise-9977927909-1-metrics-enterprise-1234
+          docker network inspect my-network
+          docker inspect my-nginx
