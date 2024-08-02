@@ -12,6 +12,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Checking git log
         run: |
-          echo Let see what is the head show
+          echo git log output
           git log
+          echo git show HEAD output
           git show HEAD
