@@ -16,3 +16,5 @@ jobs:
           git log
           echo git show HEAD output
           git show HEAD
+      - name: Just nothing
+        run: echo finished!
