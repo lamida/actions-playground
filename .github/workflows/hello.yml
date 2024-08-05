@@ -5,14 +5,18 @@ on:
   pull_request:
 
 jobs:
-  test:
+  test-e2e-services:
+    name: "E2E: test services"
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        test_group_id: [foo, bar, buz, xxx]
+        test_group_total: [ 4 ]
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Checking git log
+      - name: run
         run: |
-          echo git log output
-          git log
-          echo git show HEAD output
-          git show HEAD
+          echo build_image_command ${{matrix.test_group_id}}
+          echo run_test_command ${{matrix.test_group_id}}
