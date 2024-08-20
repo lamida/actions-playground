@@ -6,17 +6,16 @@ on:
 
 jobs:
   test-e2e-services:
+    if: startsWith(${{matrix.id}}, 'x')
     name: "E2E: test services"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        test_group_id: [foo, bar, buz, xxx]
-        test_group_total: [ 4 ]
+        id: [foo, bar, buz, xxx]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: run
         run: |
-          echo build_image_command ${{matrix.test_group_id}}
-          echo run_test_command ${{matrix.test_group_id}}
+          echo run ${{ matrix.id }}
