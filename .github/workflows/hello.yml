@@ -18,4 +18,4 @@ jobs:
       - name: run
         run: |
           echo format ${{ format('foo-{0}-zzzzz', matrix.id)}}
-          echo ${{ startsWith(format('{0}', matrix.id), buz) }}
+          echo ${{ startsWith(format('{0}', matrix.id), 'buz') }}
