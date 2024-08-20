@@ -12,7 +12,7 @@ jobs:
       matrix:
         service: [foo, bar, buz, xxx]
     steps:
-      run: echo tag=hehe-${{matrix.service}} >> '$GITHUB_OUTPUT'
+      - run: echo tag=hehe-${{matrix.service}} >> '$GITHUB_OUTPUT'
 
   test-e2e-services:
     # if: startsWith('refs/tags/foo-v23', format('refs/tags/{0}-v', matrix.service))
