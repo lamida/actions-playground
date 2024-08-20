@@ -6,14 +6,14 @@ on:
 
 jobs:
   matched-tags:
-  name: "E2E: test services"
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        service: [foo, bar, buz, xxx]
-    steps:
-      run: echo tag=hehe-${{matrix.service}} >> '$GITHUB_OUTPUT'
+    name: "E2E: test services"
+      runs-on: ubuntu-latest
+      strategy:
+        fail-fast: false
+        matrix:
+          service: [foo, bar, buz, xxx]
+      steps:
+        run: echo tag=hehe-${{matrix.service}} >> '$GITHUB_OUTPUT'
 
   test-e2e-services:
     # if: startsWith('refs/tags/foo-v23', format('refs/tags/{0}-v', matrix.service))
