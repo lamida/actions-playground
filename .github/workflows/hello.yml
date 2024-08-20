@@ -6,7 +6,6 @@ on:
 
 jobs:
   test-e2e-services:
-    if: startsWith(${{matrix.id}}, 'x')
     name: "E2E: test services"
     runs-on: ubuntu-latest
     strategy:
@@ -17,5 +16,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: run
+        if: startsWith(${{matrix.id}}, 'x')
         run: |
-          echo run ${{ matrix.id }}
+          echo run condition ${{ matrix.id }}
+      - name: run
+        run: |
+          echo always run ${{ matrix.id }}
