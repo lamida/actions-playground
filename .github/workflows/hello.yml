@@ -16,7 +16,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: run
-        if: ${{ startsWith('format('{0}', matrix.id)', 'bar') }}
+        run: |
+          echo format ${{ format('foo-{0}-zzzzz', matrix.id)}}
+      - name: run
         run: |
           echo run condition ${{ matrix.id }} ${{ startsWith('format('{0}', matrix.id)', 'bar') }}
       - name: run
