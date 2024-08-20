@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - id: tag-condition
-        run echo result=startsWith('${{matrix.id}}', 'bar') >> '$GITHUB_OUTPUT'
+        run: echo result=startsWith('${{matrix.id}}', 'bar') >> '$GITHUB_OUTPUT'
       - name: run
         if: ${{ steps.tag-condition.outputs.result }}
         run: |
