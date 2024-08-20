@@ -18,7 +18,7 @@ jobs:
       - name: run
         if: startsWith(${{matrix.id}}, 'bar')
         run: |
-          echo run condition ${{ matrix.id }} startsWith(${{matrix.id}}, 'bar')
+          echo run condition ${{ matrix.id }} ${{ startsWith(${{matrix.id}}, 'bar') }}
       - name: run
         run: |
           echo always run ${{ matrix.id }}
