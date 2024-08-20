@@ -19,3 +19,6 @@ jobs:
         run: |
           echo format ${{ format('foo-{0}-zzzzz', matrix.id)}}
           echo ${{ startsWith(format('{0}', matrix.id), 'buz') }}
+      - name: run only
+        if: startsWith(format('{0}', matrix.id), 'buz')
+        run: echo only for buzzzz
