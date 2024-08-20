@@ -22,3 +22,5 @@ jobs:
       - name: run only
         if: startsWith(format('{0}', matrix.id), 'buz')
         run: echo only for buzzzz
+      - name: run for all
+        run: echo run for all
