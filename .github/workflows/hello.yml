@@ -15,10 +15,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - id: tag-condition
+        run echo result=startsWith(${{matrix.id}}, 'bar') >> '$GITHUB_OUTPUT'
       - name: run
-        if: startsWith(${{matrix.id}}, 'bar')
+        if: ${{ steps.tag-condition.outputs.result }}
         run: |
-          echo run condition ${{ matrix.id }} ${{ startsWith(${{matrix.id}}, 'bar') }}
+          echo run condition ${{ matrix.id }} ${{ steps.tag-condition.outputs.result }}
       - name: run
         run: |
           echo always run ${{ matrix.id }}
