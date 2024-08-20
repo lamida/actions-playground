@@ -16,5 +16,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: run for foo
-        if: startsWith('refs/tags/foo-v23', format('refs/tags/{0}}-v', matrix.service))
-        run: echo run for foo only
+        #if: startsWith('refs/tags/foo-v23', format('refs/tags/{0}}-v', matrix.service))
+        run: echo run for foo only ${{ format('refs/tags/{0}}-v', matrix.service) }}
