@@ -18,9 +18,3 @@ jobs:
       - name: run
         run: |
           echo format ${{ format('foo-{0}-zzzzz', matrix.id)}}
-      - name: run
-        run: |
-          echo run condition ${{ matrix.id }} ${{ startsWith('format('{0}', matrix.id)', 'bar') }}
-      - name: run
-        run: |
-          echo always run ${{ matrix.id }} ${{ startsWith('format('{0}', matrix.id)', 'bar') }}
