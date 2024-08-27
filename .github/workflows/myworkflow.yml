@@ -10,7 +10,6 @@ jobs:
     steps:
       - run: |
           echo job one
-          exit 1
 
   bbb:
     runs-on: ubuntu-latest
