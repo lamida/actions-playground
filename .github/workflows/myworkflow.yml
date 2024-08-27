@@ -19,14 +19,9 @@ jobs:
   ccc:
     runs-on: ubuntu-latest
     needs: [aaa, bbb]
-    if: always() 
+    if: |
+      always() && ( (needs.aaa.result == 'success' && needs.bbb.result == 'success') || (needs.aaa.result == 'skipped' || needs.aaa.result == 'skipped'))
     steps:
-      - run: |
-          if [[ "${{ contains('success', needs.*.result) || contains(needs.*.result,  'skipped') }}" != 'true' ]]; then 
-            echo "E2E tests are neither success nor skipped"
-            exit 1
-          else 
-            echo "E2E tests are success or skipped"
-          fi
+      - run: echo "testing job"
 
         
