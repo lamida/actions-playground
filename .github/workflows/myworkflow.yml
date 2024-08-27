@@ -6,10 +6,10 @@ on:
 
 jobs:
   aaa:
-    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo job one
+      - run: |
+          echo job one
 
   bbb:
     runs-on: ubuntu-latest
@@ -21,4 +21,10 @@ jobs:
     needs: [aaa, bbb]
     if: always() 
     steps:
-      - run: echo job two ${{ needs.bbb.result }} + ${{ needs.aaa.result }}
+      - run: |
+          if [[ "${{ contains(needs.*.result,  'success') || contains(needs.*.result,  'skipped') }}" != 'true' ]]; then 
+            echo "E2E tests are neither success nor skipped"
+            exit 1
+          fi
+
+        
