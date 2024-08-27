@@ -1,0 +1,23 @@
+name: My Workflow
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  aaa:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo job one
+
+  bbb:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo job two
+
+  ccc:
+    runs-on: ubuntu-latest
+    needs: [aaa, bbb]
+    if: always() 
+    steps:
+      - run: echo job two ${{ needs.bbb.result }} + ${{ needs.aaa.result }}
