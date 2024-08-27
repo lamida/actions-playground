@@ -6,6 +6,7 @@ on:
 
 jobs:
   aaa:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - run: echo job one
