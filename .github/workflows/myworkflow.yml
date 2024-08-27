@@ -10,6 +10,7 @@ jobs:
     steps:
       - run: |
           echo job one
+          exit 1
 
   bbb:
     runs-on: ubuntu-latest
@@ -25,6 +26,8 @@ jobs:
           if [[ "${{ contains(needs.*.result,  'success') || contains(needs.*.result,  'skipped') }}" != 'true' ]]; then 
             echo "E2E tests are neither success nor skipped"
             exit 1
+          else 
+            echo "E2E tests are success or skipped"
           fi
 
         
