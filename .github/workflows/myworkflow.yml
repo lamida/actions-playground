@@ -23,7 +23,7 @@ jobs:
     if: always() 
     steps:
       - run: |
-          if [[ "${{ contains(needs.*.result,  'success') || contains(needs.*.result,  'skipped') }}" != 'true' ]]; then 
+          if [[ "${{ contains('success', needs.*.result) || contains(needs.*.result,  'skipped') }}" != 'true' ]]; then 
             echo "E2E tests are neither success nor skipped"
             exit 1
           else 
