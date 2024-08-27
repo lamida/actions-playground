@@ -20,7 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: [aaa, bbb]
     if: |
-      always() && ( (needs.aaa.result == 'success' && needs.bbb.result == 'success') || (needs.aaa.result == 'skipped' || needs.aaa.result == 'skipped'))
+      always() && ( 
+      (needs.aaa.result == 'success' && needs.bbb.result == 'success') || 
+      (needs.aaa.result == 'skipped' || needs.aaa.result == 'skipped'))
     steps:
       - run: echo "testing job"
 
