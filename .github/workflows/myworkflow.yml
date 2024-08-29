@@ -33,4 +33,4 @@ jobs:
     runs-on: ubuntu-latest
     needs: [aaa, bbb]
     steps:
-      run: echo ${{ env.CONDITION }}
+      - run: echo ${{ env.CONDITION }}
