@@ -27,3 +27,10 @@ jobs:
       (needs.aaa.result == 'skipped' && needs.aaa.result == 'skipped'))
 
         
+  dddd:
+    env:
+      CONDITION: ${{ (needs.aaa.result == 'success' && needs.bbb.result == 'success') || (needs.aaa.result == 'skipped' && needs.aaa.result == 'skipped') }}
+    runs-on: ubuntu-latest
+    needs: [aaa, bbb]
+    steps:
+      run: echo ${{ env.CONDITION }}
