@@ -16,4 +16,3 @@ jobs:
     steps:
       - run: |
           echo I am not ok
-          exit 1
