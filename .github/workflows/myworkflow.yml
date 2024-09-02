@@ -5,37 +5,15 @@ on:
   pull_request:
 
 jobs:
-  aaa:
-    if: ${{ false }}
+  ok-job:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo job one
+          echo I am ok
 
-  bbb:
+  not-ok-job:
     runs-on: ubuntu-latest
-    steps:
-      - run: echo job two
-
-  ccc:
-    runs-on: ubuntu-latest
-    needs: [aaa, bbb]
-    if: |
-      always() && ( 
-      (needs.aaa.result == 'success' && needs.bbb.result == 'success') || 
-      (needs.aaa.result == 'skipped' && needs.aaa.result == 'skipped'))
-    steps:
-      - run: echo job three
-
-        
-  dddd:
-    env:
-      CONDITION_A: ${{ needs.aaa.result }}
-      CONDITION_B: ${{ needs.bbb.result }}
-    runs-on: ubuntu-latest
-    needs: [aaa, bbb]
-    if: always()
     steps:
       - run: |
-          echo ${{ env.CONDITION_A }}
-          echo ${{ env.CONDITION_B }}
+          echo I am not ok
+          exit 1

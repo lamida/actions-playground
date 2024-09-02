@@ -1,0 +1,35 @@
+
+name: My Workflow Two
+
+on:
+  workflow_run:
+    workflows: ["My Workflow"]
+    types: 
+      - completed
+    branches:
+      - main
+  push:
+    branches:
+      - test
+
+jobs:
+  keep-running:
+    if: github.event.workflow_run.conclusion != 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo fail handler
+
+  prepare:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo I am ok
+
+  heihe:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo I am not ok
