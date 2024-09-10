@@ -36,6 +36,7 @@ jobs:
              exclude-paths: ${{matrix.exclude-paths }}
        - name: Print filter
          run: |
-           echo "logs-forwarder-include-paths: ${{ steps.filter.outputs.include-paths }}"
-           echo "log-forwarder-exclude-paths: ${{ steps.filter.outputs.exclude-paths }}"
+           echo "matrix-service: ${{ matrix.service }}"
+           echo "include-paths: ${{ steps.filter.outputs.include-paths }}"
+           echo "exclude-paths: ${{ steps.filter.outputs.exclude-paths }}"
            echo "run logs-forwarder pipeline ${{ steps.filter.outputs.include-paths == 'true' && steps.filter.outputs.exclude-paths != 'true' && matrix.service == matrix.service }}"
