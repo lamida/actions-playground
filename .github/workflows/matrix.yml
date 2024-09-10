@@ -3,7 +3,7 @@ name: foo
 on: 
   push:
     branches:
-      - master
+      - main
 
 jobs:
   mm:
