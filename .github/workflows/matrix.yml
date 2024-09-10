@@ -23,4 +23,15 @@ jobs:
               - 'pkg/cloud/logs/gateway*'
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, world ${{ matrix.service }} ${{matrix.include-paths }} ${{ matrix.exclude-paths }}!"
+       - run: echo "Hello, world ${{ matrix.service }} ${{matrix.include-paths }} ${{ matrix.exclude-paths }}!"
+       - id: filter
+         uses: dorny/paths-filter@v3
+         with:
+           filters: |
+             include-paths: ${{matrix.include-paths }}
+             exclude-paths: ${{matrix.exclude-paths }}
+       - name: Print filter
+         run: |
+           echo "logs-forwarder-include-paths: ${{ steps.filter.outputs.include-paths }}"
+           echo "log-forwarder-exclude-paths: ${{ steps.filter.outputs.exclude-paths }}"
+           echo "run logs-forwarder pipeline ${{ steps.filter.outputs.include-paths == 'true' && steps.filter.outputs.exclude-paths != 'true' && matrix.service == matrix.service }}
