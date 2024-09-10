@@ -25,6 +25,8 @@ jobs:
               - 'pkg/cloud/logs/gateway*'
     runs-on: ubuntu-latest
     steps:
+       - name: Checkout
+         uses: actions/checkout@v4
        - run: echo "Hello, world ${{ matrix.service }} ${{matrix.include-paths }} ${{ matrix.exclude-paths }}!"
        - id: filter
          uses: dorny/paths-filter@v3
