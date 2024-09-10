@@ -1,0 +1,21 @@
+name: hoho
+
+on: 
+  push:
+    branches:
+    - main
+
+env:
+  MY_VAR: 123
+  MY_VAR2: 333 
+
+jobs:
+  one:
+    runs-on: ubuntu-latest
+    env:
+      MY_VAR: 456
+    steps: 
+      - name: one
+        run: |
+          echo "MY_VAR: $MY_VAR"
+          echo "MY_VAR2: $MY_VAR2"
