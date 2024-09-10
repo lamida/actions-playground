@@ -15,6 +15,8 @@ jobs:
             include-paths: 
              - 'cmd/logs-gateway/**'
              - 'pkg/cloud/logs/gateway*'
+            exclude-paths:
+              - 'dummy'
           - service: logs-forwarder
             include-paths:
               - 'cmd/logs-forwarder/**'
