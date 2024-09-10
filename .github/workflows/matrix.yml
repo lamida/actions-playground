@@ -1,0 +1,26 @@
+name: foo
+
+on: 
+    push:
+        branches:
+        - master
+
+jobs:
+    mm:
+        name: foo bar
+        strategy:
+            matrix:
+                include:
+                    - service: logs-gateway
+                      include-paths: 
+                        - 'cmd/logs-gateway/**'
+                        - 'pkg/cloud/logs/gateway*'
+                    - service: logs-forwarder
+                      include-paths:
+                        - 'cmd/logs-forwarder/**'
+                        - 'pkg/cloud/logs/**'
+                     exclude-paths:
+                        - 'pkg/cloud/logs/gateway*'
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Hello, world ${{ matrix.service }} ${{matrix.include-paths }} ${{ matrix.exclude-paths }}!"
