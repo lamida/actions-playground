@@ -12,16 +12,16 @@ jobs:
       matrix:
         include:
           - service: logs-gateway
-            include-paths: |
+            include-paths:
                - 'cmd/logs-gateway/**'
                - 'pkg/cloud/logs/gateway*'
-            exclude-paths: |
+            exclude-paths:
                - 'dummy'
           - service: logs-forwarder
-            include-paths: |
+            include-paths:
                - 'cmd/logs-forwarder/**'
                - 'pkg/cloud/logs/**'
-            exclude-paths: |
+            exclude-paths:
                - 'pkg/cloud/logs/gateway*'
     runs-on: ubuntu-latest
     steps:
