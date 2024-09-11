@@ -1,4 +1,4 @@
-name: foo
+name: Matrix 1
 
 on: 
   push:
@@ -32,4 +32,4 @@ jobs:
            echo "matrix-service: ${{ matrix.service }}"
            echo "include-paths: ${{ steps.filter.outputs.include-paths }}"
            echo "exclude-paths: ${{ steps.filter.outputs.exclude-paths }}"
-           echo "run ${{ matrix.service }} pipeline ${{ matrix.service == matrix.service && ( steps.filter.outputs.include-paths == 'true' || steps.filter.outputs.exclude-paths != 'true' ) }}"
+           echo "run ${{ matrix.service }} pipeline ${{ matrix.service == matrix.service && ( steps.filter.outputs.include-paths == 'true' && steps.filter.outputs.exclude-paths != 'true' ) }}"

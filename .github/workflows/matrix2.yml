@@ -1,0 +1,39 @@
+name: Matrix 2
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  mm:
+    name: foo bar
+    strategy:
+      matrix:
+        include:
+          - service: logs-gateway
+          - service: logs-forwarder
+    runs-on: ubuntu-latest
+    steps:
+       - name: Checkout
+         uses: actions/checkout@v4
+       - id: filter
+         uses: dorny/paths-filter@v3
+         with:
+           filters: |
+            logs-forwarder-include-paths:
+              - 'cmd/logs-forwarder/**'
+              - 'pkg/cloud/logs/**'
+            logs-forwarder-exclude-paths:
+              - 'pkg/cloud/logs/gateway*'
+            logs-gateway-include-paths:
+              - 'cmd/logs-gateway/**'
+              - 'pkg/cloud/logs/gateway*'
+       - name: Print filter
+         run: |
+          echo "matrix-service: ${{ matrix.service }}"
+          echo "logs-forwarder-include-paths: ${{ steps.filter.outputs.logs-forwarder-include-paths }}"
+          echo "log-forwarder-exclude-paths: ${{ steps.filter.outputs.log-forwarder-exclude-paths }}"
+          echo "logs-gateway-include-paths: ${{ steps.filter.outputs.logs-gateway-include-paths }}"
+          echo "run logs-forwarder pipeline ${{ steps.filter.outputs.logs-forwarder-include-paths == 'true' && steps.filter.outputs.log-forwarder-exclude-paths != 'true' && matrix.service == 'logs-forwarder' }}
+          echo "run logs-gateway pipeline ${{ steps.filter.outputs.logs-gateway-include-paths == 'true' && matrix.service == 'logs-gateway' }}
