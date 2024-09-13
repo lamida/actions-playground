@@ -1,0 +1,22 @@
+name: Fail Partial
+
+on: 
+    push:
+        branches:
+        - test-this
+        - test-that
+        - main
+
+
+jobs: 
+    fail-job:
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                echo "fail"
+                exit 1
+    
+    success-job:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Success"
