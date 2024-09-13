@@ -6,6 +6,10 @@ on:
             - Success
         types: 
             - completed 
+        branches: 
+            - test-this
+            - test-that
+            - main
 
 
 jobs:
