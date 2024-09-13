@@ -18,9 +18,14 @@ jobs:
     run-depend:
         runs-on: ubuntu-latest
         steps:
-            - run: echo ${{ github.workflow }}-${{ github.ref_name }}-${{ github.head_ref }}
-            - run: echo ${{ github.ref }}
-            - run: echo ${{ github.event.workflow_run.conclusion }} 
+            - run: |
+                echo worflow: ${{ github.workflow }}
+                echo workflow head_branch: ${{ github.event.workflow_run.head_branch }}
+                echo default_branch: ${{ github.event.repository.default_branch }}
+                echo ref_name: ${{ github.ref_name }}
+                echo head_ref: ${{ github.head_ref }}
+                echo ref: ${{ github.ref }}
+                echo workflow_run conclusion: ${{ github.event.workflow_run.conclusion }} 
             - run: echo "Dependent on fail, never run"
               if: github.event.workflow_run.conclusion == 'success'
             - run: echo "Dependent on fail always run"
