@@ -28,7 +28,7 @@ jobs:
             - run: echo "Success"
             - uses: actions/checkout@v4
               with:
-                ref: test-this
+                ref: v1
                 fetch-depth: 0
             - run: |
                 git rev-parse HEAD   
