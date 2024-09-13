@@ -1,4 +1,4 @@
-name: Must run after success
+name: Must run after fail
 
 on:
     workflow_run: 
