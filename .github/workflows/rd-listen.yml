@@ -1,0 +1,14 @@
+name: RD Listen
+
+on: 
+    repository_dispatch:
+        types: 
+            - ci-success
+
+jobs:
+    run-depend:
+        runs-on: ubuntu-latest
+        steps:
+        - run: |
+            echo ${{ github.event.client_payload.sha }}
+            echo ${{ github.event.client_payload.ref }}
