@@ -33,6 +33,6 @@ jobs:
             - run: |
                 git rev-parse HEAD   
                 git rev-parse --abbrev-ref HEAD   
-            - name: skip job
+            - name: skip job here
               if: ${{ false }}
               run: echo "This job should not run"
