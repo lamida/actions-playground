@@ -7,6 +7,12 @@ on:
         types: 
             - completed 
 
+        branches: 
+            - test-this
+            - test-that
+            - main
+
+
 
 jobs:
     run-depend:
