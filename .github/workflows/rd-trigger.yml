@@ -25,3 +25,11 @@ jobs:
           with:
             event-type: ci-success
             client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}" "github-event-before": "${{ github.event.before }}"}'
+        - name: checkout
+          uses: actions/checkout@v4
+        - uses: ./.github/actions/hello-composite
+          env: 
+            HAHA: "custom hahahahaahah"
+          
+          
+
