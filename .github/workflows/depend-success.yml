@@ -1,4 +1,4 @@
-name: Must run after success
+name: Must run after success 
 
 on:
     workflow_run: 
@@ -19,6 +19,7 @@ jobs:
     run-depend:
         runs-on: ubuntu-latest
         steps:
+            - run: echo ${{ github.event.workflow_run.head_branch }} 
             - run: |
                 echo worflow: '${{ github.workflow }}'
                 echo github: '${{ toJson(github) }}'
