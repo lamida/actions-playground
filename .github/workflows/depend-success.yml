@@ -18,7 +18,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: |
-                echo worflow: ${{ github.workflow }}
+                echo worflow: "${{ github.workflow }}"
                 echo workflow workflow_run: "${{ toJson(github.event.workflow_run) }}"
                 echo workflow head_branch: ${{ github.event.workflow_run.head_branch }}
                 echo default_branch: ${{ github.event.repository.default_branch }}
