@@ -6,6 +6,7 @@ on:
         - test-this
         - test-that
         - main
+        - banana
 
 
 jobs: 
