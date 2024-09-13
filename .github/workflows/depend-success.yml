@@ -33,3 +33,7 @@ jobs:
             - run: echo "Dependent on success, should run"
               if: github.event.workflow_run.conclusion == 'success'
             - run: echo "Dependent on success"
+            - uses: actions/checkout@v4
+              with:
+                ref: v1
+                fetch-depth: 0
