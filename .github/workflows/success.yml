@@ -24,3 +24,9 @@ jobs:
                 echo head_ref: ${{ github.head_ref }}
                 echo ref: ${{ github.ref }}
             - run: echo "Success"
+            - uses: actions/checkout@v4
+              with:
+                ref: test-that
+            - run: |
+                git rev-parse HEAD   
+                git rev-parse --abbrev-ref HEAD   
