@@ -12,6 +12,7 @@ on:
 permissions:
     contents: write
 
+    
 jobs:
     run-depend:
         runs-on: ubuntu-latest
