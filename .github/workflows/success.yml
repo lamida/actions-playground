@@ -1,0 +1,15 @@
+name: Success
+
+on: 
+    push:
+        branches:
+        - test-this
+        - test-that
+        - main
+
+
+jobs: 
+    success-job:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Success"
