@@ -10,6 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - run: |
+            echo '${{ toJson(github)}}'
             echo ${{ github.event.client_payload.sha }}
             echo ${{ github.event.client_payload.ref }}
             echo Beofre ${{ github.event.client_payload.github-event-before }}
