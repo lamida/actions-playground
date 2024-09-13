@@ -12,4 +12,5 @@ jobs:
         - run: |
             echo ${{ github.event.client_payload.sha }}
             echo ${{ github.event.client_payload.ref }}
+            echo Beofre ${{ github.event.client_payload.github-event-before }}
             echo '${{ toJson(github) }}'

@@ -17,8 +17,11 @@ jobs:
     run-depend:
         runs-on: ubuntu-latest
         steps:
+        - name: Printer
+          run: |
+            echo '${{ toJson(github) }}'
         - name: Repository Dispatch
           uses: peter-evans/repository-dispatch@v3
           with:
             event-type: ci-success
-            client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+            client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}" "github-event-before": "${{ github.event.before }}"}'
