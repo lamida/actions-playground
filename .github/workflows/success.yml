@@ -16,7 +16,7 @@ jobs:
         steps:
             - run: |
                 echo worflow: ${{ github.workflow }}
-                echo repository: ${{ toJson(github.event.repository) }}
+                echo repository: "${{ toJson(github.event.repository) }}"
                 echo default_branch: ${{ github.event.repository.default_branch }}
                 echo ref_name: ${{ github.ref_name }}
                 echo head_ref: ${{ github.head_ref }}
