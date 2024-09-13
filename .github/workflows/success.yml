@@ -7,10 +7,18 @@ on:
         - test-that
         - main
         - banana
+    pull_request: 
 
 
 jobs: 
     success-job:
         runs-on: ubuntu-latest
         steps:
+            - run: |
+                echo worflow: ${{ github.workflow }}
+                echo repository: ${{ toJson(github.event.repository) }}
+                echo default_branch: ${{ github.event.repository.default_branch }}
+                echo ref_name: ${{ github.ref_name }}
+                echo head_ref: ${{ github.head_ref }}
+                echo ref: ${{ github.ref }}
             - run: echo "Success"
