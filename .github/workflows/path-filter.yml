@@ -1,0 +1,35 @@
+name: Path filter
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  mm:
+    name: foo bar
+    strategy:
+      matrix:
+        include:
+          - service: logs-gateway
+            include-paths: "['cmd/logs-gateway/**', 'pkg/cloud/logs/gateway*']"
+            exclude-paths: "['dummy']"
+          - service: logs-forwarder
+            include-paths: "['cmd/logs-forwarder/**', 'pkg/cloud/logs/**']"
+            exclude-paths: "[ 'pkg/cloud/logs/gateway*' ]"
+    runs-on: ubuntu-latest
+    steps:
+       - name: Checkout
+         uses: actions/checkout@v4
+       - id: filter
+         uses: dorny/paths-filter@v3
+         with:
+           filters: |
+             include-paths: ${{matrix.include-paths }}
+             exclude-paths: ${{matrix.exclude-paths }}
+       - name: Print filter
+         run: |
+           echo "matrix-service: ${{ matrix.service }}"
+           echo "include-paths: ${{ steps.filter.outputs.include-paths }}"
+           echo "exclude-paths: ${{ steps.filter.outputs.exclude-paths }}"
+           echo "run logs-forwarder pipeline ${{ steps.filter.outputs.include-paths == 'true' && steps.filter.outputs.exclude-paths != 'true' && matrix.service == matrix.service }}"
