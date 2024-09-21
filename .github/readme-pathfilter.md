@@ -11,7 +11,7 @@ exclude-paths: "['dummy']"
 - change cmd/logs-gateway/** and pkg/cloud/logs/gateway* and pkg/cloud/logs/** -> trigger deploy-logs-gateway
 
 ```
-msg="change cmd/logs-gateway/** -> trigger deploy-logs-gateway"
+msg="logs-gateway: change cmd/logs-gateway/** -> trigger deploy-logs-gateway"
 echo $msg
 echo foo >> cmd/logs-gateway/logs-gateway
 git add .
@@ -19,7 +19,7 @@ git commit -sm $msg
 git push origin main
 
 
-msg= "change pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
+msg= "logs-gateway: change pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
 echo $msg
 echo foo >> pkg/cloud/logs/gateway-foo
 git add .
@@ -27,14 +27,14 @@ git commit -sm $msg
 git push origin main
 
 
-msg="change pkg/cloud/logs/** -> don't trigger deploy-logs-gateway"
+msg="logs-gateway: change pkg/cloud/logs/** -> don't trigger deploy-logs-gateway"
 echo $msg
 echo foo >> pkg/cloud/logs/not-gateway-foo
 git add .
 git commit -sm $msg
 git push origin main
 
-msg="change cmd/logs-gateway/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
+msg="logs-gateway: change cmd/logs-gateway/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
 echo $msg
 echo foo >> cmd/logs-gateway/logs-gateway
 echo foo >> pkg/cloud/logs/gateway-foo
@@ -42,7 +42,7 @@ git add .
 git commit -sm $msg
 git push origin main
 
-msg="change cmd/logs-gateway/** and pkg/cloud/logs/** -> trigger deploy-logs-gateway"
+msg="logs-gateway: change cmd/logs-gateway/** and pkg/cloud/logs/** -> trigger deploy-logs-gateway"
 echo $msg
 echo foo >> cmd/logs-gateway/logs-gateway
 echo foo >> pkg/cloud/logs/not-gateway-foo
@@ -50,7 +50,7 @@ git add .
 git commit -sm $msg
 git push origin main
 
-msg="change cmd/logs-gateway/** and pkg/cloud/logs/gateway* and pkg/cloud/logs/** -> trigger deploy-logs-gateway"
+msg="logs-gateway: change cmd/logs-gateway/** and pkg/cloud/logs/gateway* and pkg/cloud/logs/** -> trigger deploy-logs-gateway"
 echo $msg
 echo foo >> cmd/logs-gateway/logs-gateway
 echo foo >> pkg/cloud/logs/gateway-foo
@@ -73,7 +73,7 @@ exclude-paths: "[ 'pkg/cloud/logs/gateway*' ]"
 - change cmd/logs-forwarder/** and change pkg/cloud/logs/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway
 
 ```
-msg="change cmd/logs-forwarder/** -> trigger deploy-logs-forwarder"
+msg="logs-forwarder: logs-forwarder: change cmd/logs-forwarder/** -> trigger deploy-logs-forwarder"
 echo $msg
 echo foo >> cmd/logs-forwarder/logs-forwarder
 git add .
@@ -81,7 +81,7 @@ git commit -sm $msg
 git push origin main
 
 
-msg= "change pkg/cloud/logs/** -> trigger deploy-logs-forwarder"
+msg= "logs-forwarder: change pkg/cloud/logs/** -> trigger deploy-logs-forwarder"
 echo $msg
 echo foo >> pkg/cloud/logs/anything-foo
 git add .
@@ -89,14 +89,14 @@ git commit -sm $msg
 git push origin main
 
 
-msg="change pkg/cloud/logs/gateway* -> don't trigger deploy-logs-forwarder"
+msg="logs-forwarder: change pkg/cloud/logs/gateway* -> don't trigger deploy-logs-forwarder"
 echo $msg
 echo foo >> pkg/cloud/logs/gateway-foo
 git add .
 git commit -sm $msg
 git push origin main
 
-msg="change cmd/logs-forwarder/** and pkg/cloud/logs/** -> trigger deploy-logs-gateway"
+msg="logs-forwarder: change cmd/logs-forwarder/** and pkg/cloud/logs/** -> trigger deploy-logs-gateway"
 echo $msg
 echo foo >> cmd/logs-forwarder/logs-forwarder
 echo foo >> pkg/cloud/logs/anything-foo
@@ -104,7 +104,7 @@ git add .
 git commit -sm $msg
 git push origin main
 
-msg="change cmd/logs-forwarder/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-forwarder"
+msg="logs-forwarder: change cmd/logs-forwarder/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-forwarder"
 echo $msg
 echo foo >> cmd/logs-forwarder/logs-forwarder
 echo foo >> pkg/cloud/logs/gateway-foo
@@ -112,7 +112,7 @@ git add .
 git commit -sm $msg
 git push origin main
 
-msg="change cmd/logs-forwarder/** and pkg/cloud/logs/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
+msg="logs-forwarder: change cmd/logs-forwarder/** and pkg/cloud/logs/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
 echo $msg
 echo foo >> cmd/logs-forwarder/logs-forwarder
 echo foo >> pkg/cloud/logs/anything-foo
