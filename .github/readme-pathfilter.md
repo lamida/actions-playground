@@ -16,7 +16,7 @@ echo $msg
 echo foo >> cmd/logs-gateway/logs-gateway
 git add .
 git commit -sm $msg
-git push origin test-path-filter
+git push origin main
 
 
 msg="2: logs-gateway: change pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
@@ -24,7 +24,7 @@ echo $msg
 echo foo >> pkg/cloud/logs/gateway-foo
 git add .
 git commit -sm $msg
-git push origin test-path-filter
+git push origin main
 
 
 msg="3: logs-gateway: change pkg/cloud/logs/** -> don't trigger deploy-logs-gateway"
@@ -32,7 +32,7 @@ echo $msg
 echo foo >> pkg/cloud/logs/not-gateway-foo
 git add .
 git commit -sm $msg
-git push origin test-path-filter
+git push origin main
 
 msg="4: logs-gateway: change cmd/logs-gateway/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
 echo $msg
@@ -40,7 +40,7 @@ echo foo >> cmd/logs-gateway/logs-gateway
 echo foo >> pkg/cloud/logs/gateway-foo
 git add .
 git commit -sm $msg
-git push origin test-path-filter
+git push origin main
 
 msg="5: logs-gateway: change cmd/logs-gateway/** and pkg/cloud/logs/** -> trigger deploy-logs-gateway"
 echo $msg
@@ -48,7 +48,7 @@ echo foo >> cmd/logs-gateway/logs-gateway
 echo foo >> pkg/cloud/logs/not-gateway-foo
 git add .
 git commit -sm $msg
-git push origin test-path-filter
+git push origin main
 
 msg="6: logs-gateway: change cmd/logs-gateway/** and pkg/cloud/logs/gateway* and pkg/cloud/logs/** -> trigger deploy-logs-gateway"
 echo $msg
@@ -57,7 +57,7 @@ echo foo >> pkg/cloud/logs/gateway-foo
 echo foo >> pkg/cloud/logs/not-gateway-foo
 git add .
 git commit -sm $msg
-git push origin test-path-filter
+git push origin main
 ```
 
 # logs-forwarder
@@ -78,7 +78,7 @@ echo $msg
 echo foo >> cmd/logs-forwarder/logs-forwarder
 git add .
 git commit -sm $msg
-git push origin test-path-filter
+git push origin main
 
 
 msg= "2: logs-forwarder: change pkg/cloud/logs/** -> trigger deploy-logs-forwarder"
@@ -86,7 +86,7 @@ echo $msg
 echo foo >> pkg/cloud/logs/anything-foo
 git add .
 git commit -sm $msg
-git push origin test-path-filter
+git push origin main
 
 
 msg="3: logs-forwarder: change pkg/cloud/logs/gateway* -> don't trigger deploy-logs-forwarder"
@@ -94,7 +94,7 @@ echo $msg
 echo foo >> pkg/cloud/logs/gateway-foo
 git add .
 git commit -sm $msg
-git push origin test-path-filter
+git push origin main
 
 msg="4: logs-forwarder: change cmd/logs-forwarder/** and pkg/cloud/logs/** -> trigger deploy-logs-gateway"
 echo $msg
@@ -102,7 +102,7 @@ echo foo >> cmd/logs-forwarder/logs-forwarder
 echo foo >> pkg/cloud/logs/anything-foo
 git add .
 git commit -sm $msg
-git push origin test-path-filter
+git push origin main
 
 msg="5: logs-forwarder: change cmd/logs-forwarder/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-forwarder"
 echo $msg
@@ -110,7 +110,7 @@ echo foo >> cmd/logs-forwarder/logs-forwarder
 echo foo >> pkg/cloud/logs/gateway-foo
 git add .
 git commit -sm $msg
-git push origin test-path-filter
+git push origin main
 
 msg="6: logs-forwarder: change cmd/logs-forwarder/** and pkg/cloud/logs/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
 echo $msg
@@ -119,5 +119,5 @@ echo foo >> pkg/cloud/logs/anything-foo
 echo foo >> pkg/cloud/logs/gateway-foo
 git add .
 git commit -sm $msg
-git push origin test-path-filter
+git push origin main
 ```
