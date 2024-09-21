@@ -19,7 +19,7 @@ git commit -sm $msg
 git push origin main
 
 
-msg= "logs-gateway: change pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
+msg="logs-gateway: change pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
 echo $msg
 echo foo >> pkg/cloud/logs/gateway-foo
 git add .
