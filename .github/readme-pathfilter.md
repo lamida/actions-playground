@@ -81,7 +81,7 @@ git commit -sm $msg
 git push origin main
 
 
-msg= "2: logs-forwarder: change pkg/cloud/logs/** -> trigger deploy-logs-forwarder"
+msg="2: logs-forwarder: change pkg/cloud/logs/** -> trigger deploy-logs-forwarder"
 echo $msg
 echo foo >> pkg/cloud/logs/anything-foo
 git add .
