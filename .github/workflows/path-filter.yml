@@ -8,7 +8,7 @@ on:
 
 jobs:
   mm:
-    name: foo bar
+    name: Test Path filter
     strategy:
       matrix:
         include:
