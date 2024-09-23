@@ -120,4 +120,12 @@ echo foo >> pkg/cloud/logs/gateway-foo
 git add .
 git commit -sm $msg
 git push origin main
+
+msg="7: logs-forwarder: change pkg/cloud/logs/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
+echo $msg
+echo foo >> pkg/cloud/logs/anything-foo
+echo foo >> pkg/cloud/logs/gateway-foo
+git add .
+git commit -sm $msg
+git push origin main
 ```
