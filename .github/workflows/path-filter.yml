@@ -13,11 +13,9 @@ jobs:
         include:
           - service: logs-gateway
             include-paths: "['cmd/logs-gateway/**', 'pkg/cloud/logs/gateway*']"
-            include-parent-of-exclude-paths: "[]"
             exclude-paths: "['dummy']"
           - service: logs-forwarder
-            include-paths: "['cmd/logs-forwarder/**']"
-            include-parent-of-exclude-paths: "['pkg/cloud/logs/**']"
+            include-paths: "['cmd/logs-forwarder/**', 'pkg/cloud/logs/**']"
             exclude-paths: "[ 'pkg/cloud/logs/gateway*' ]"
     runs-on: ubuntu-latest
     steps:
