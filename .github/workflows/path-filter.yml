@@ -29,6 +29,7 @@ jobs:
            filters: |
              include-paths: ${{matrix.include-paths }}
              exclude-paths: ${{matrix.exclude-paths }}
+           list-files: 'json'
        - name: Print filter
          run: |
            echo "matrix-service: ${{ matrix.service }}"
