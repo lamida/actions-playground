@@ -37,4 +37,4 @@ jobs:
            echo "exclude-paths-count: ${{ steps.filter.outputs.exclude-paths_count }}"
            echo "include-paths-files: ${{ steps.filter.outputs.include-paths_files }}"
            echo "exclude-paths-files: ${{ steps.filter.outputs.exclude-paths_files }}"
-           echo "run ${{ matrix.service }} pipeline ${{ steps.filter.outputs.include-paths == 'true' && steps.filter.outputs.exclude-paths != 'true' }}"
+           echo "run ${{ matrix.service }} pipeline ${{ steps.filter.outputs.include-paths == 'true' && steps.filter.outputs.exclude-paths != 'true' || steps.filter.outputs.include-paths_count != steps.filter.outputs.exclude-paths_count}}"
