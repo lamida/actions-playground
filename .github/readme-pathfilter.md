@@ -138,7 +138,7 @@ git add .
 git commit -sm $msg
 git push origin main
 
-msg="8: logs-forwarder: change multiple pkg/cloud/logs/gateway* -> don't trigger deploy-logs-gateway"
+msg="9: logs-forwarder: change multiple pkg/cloud/logs/gateway* -> don't trigger deploy-logs-gateway"
 echo $msg
 echo foo >> pkg/cloud/logs/gateway-foo
 echo foo >> pkg/cloud/logs/gateway-bar
