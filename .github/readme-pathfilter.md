@@ -96,7 +96,7 @@ git add .
 git commit -sm $msg
 git push origin main
 
-msg="4: logs-forwarder: change cmd/logs-forwarder/** and pkg/cloud/logs/** -> trigger deploy-logs-gateway"
+msg="4: logs-forwarder: change cmd/logs-forwarder/** and pkg/cloud/logs/** -> trigger deploy-logs-forwarder"
 echo $msg
 echo foo >> cmd/logs-forwarder/logs-forwarder
 echo foo >> pkg/cloud/logs/anything-foo
@@ -112,7 +112,7 @@ git add .
 git commit -sm $msg
 git push origin main
 
-msg="6: logs-forwarder: change cmd/logs-forwarder/** and pkg/cloud/logs/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
+msg="6: logs-forwarder: change cmd/logs-forwarder/** and pkg/cloud/logs/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-forwarder"
 echo $msg
 echo foo >> cmd/logs-forwarder/logs-forwarder
 echo foo >> pkg/cloud/logs/anything-foo
@@ -121,7 +121,7 @@ git add .
 git commit -sm $msg
 git push origin main
 
-msg="7: logs-forwarder: change pkg/cloud/logs/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
+msg="7: logs-forwarder: change pkg/cloud/logs/** and pkg/cloud/logs/gateway* -> trigger deploy-logs-forwarder"
 echo $msg
 echo foo >> pkg/cloud/logs/anything-foo
 echo foo >> pkg/cloud/logs/gateway-foo
@@ -129,7 +129,7 @@ git add .
 git commit -sm $msg
 git push origin main
 
-msg="8: logs-forwarder: change pkg/cloud/logs/** and multiple pkg/cloud/logs/gateway* -> trigger deploy-logs-gateway"
+msg="8: logs-forwarder: change pkg/cloud/logs/** and multiple pkg/cloud/logs/gateway* -> trigger deploy-logs-forwarder"
 echo $msg
 echo foo >> pkg/cloud/logs/anything-foo
 echo foo >> pkg/cloud/logs/gateway-foo
@@ -138,7 +138,7 @@ git add .
 git commit -sm $msg
 git push origin main
 
-msg="9: logs-forwarder: change multiple pkg/cloud/logs/gateway* -> don't trigger deploy-logs-gateway"
+msg="9: logs-forwarder: change multiple pkg/cloud/logs/gateway* -> don't trigger deploy-logs-forwarder"
 echo $msg
 echo foo >> pkg/cloud/logs/gateway-foo
 echo foo >> pkg/cloud/logs/gateway-bar
