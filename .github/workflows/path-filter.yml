@@ -13,7 +13,7 @@ jobs:
         include:
           - service: logs-gateway
             include-paths: "['cmd/logs-gateway/**', 'pkg/cloud/logs/gateway*']"
-            exclude-paths: "['dummy']"
+            exclude-paths: "[]"
           - service: logs-forwarder
             include-paths: "['cmd/logs-forwarder/**', 'pkg/cloud/logs/**']"
             exclude-paths: "[ 'pkg/cloud/logs/gateway*' ]"
