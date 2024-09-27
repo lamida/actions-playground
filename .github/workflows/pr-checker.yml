@@ -17,7 +17,7 @@ jobs:
   job-three:
     runs-on: ubuntu-latest
     steps: 
-        - run: echo "fine 3"
+        - run: echo "fine 32"
 
   pr-checker:
     runs-on: ubuntu-latest
