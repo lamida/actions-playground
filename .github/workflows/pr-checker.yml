@@ -29,4 +29,8 @@ jobs:
     name: PR Checker
     if: always()
     steps:
-        - run: if ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'skipped') }} ; then exit 1; fi
+        - run: |
+            if ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'skipped') }} ; then 
+                echo "Some of required jobs are skipped or failed";
+                exit 1; 
+            fi
