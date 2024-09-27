@@ -28,4 +28,4 @@ jobs:
         - job-three
     name: PR Checker
     steps:
-        - run: echo "pr is ok"
+        - run: if ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'skipped') }} ; then exit 1; fi
