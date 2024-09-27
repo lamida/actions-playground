@@ -17,7 +17,8 @@ jobs:
   job-three:
     runs-on: ubuntu-latest
     steps: 
-        - run: echo "fine 3"
+        - run: echo "fine 32"
+        - run: exit 1; # This will fail the job
 
   pr-checker:
     runs-on: ubuntu-latest
@@ -26,5 +27,14 @@ jobs:
         - job-two
         - job-three
     name: PR Checker
+    if: always()
     steps:
-        - run: echo "pr is ok"
+        - name: Check CI jobs result
+          run: |
+            # Checking whether all dependent jobs are successful
+            if ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'skipped') }} ; then 
+                echo "Some of the required jobs are skipped or failed";
+                exit 1; 
+            else
+                echo "All of the required jobs are successful";
+            fi
