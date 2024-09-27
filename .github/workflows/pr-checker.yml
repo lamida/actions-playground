@@ -27,5 +27,6 @@ jobs:
         - job-two
         - job-three
     name: PR Checker
+    if: always()
     steps:
         - run: if ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'skipped') }} ; then exit 1; fi
