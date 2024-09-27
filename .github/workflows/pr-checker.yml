@@ -7,18 +7,24 @@ jobs:
   job-one:
     runs-on: ubuntu-latest
     steps: 
-        - run: echo "fine"
+        - run: echo "fine 1"
 
   job-two:
     runs-on: ubuntu-latest
     steps: 
-        - run: echo "fine again"
+        - run: echo "fine 2"
+
+  job-three:
+    runs-on: ubuntu-latest
+    steps: 
+        - run: echo "fine 3"
 
   pr-checker:
     runs-on: ubuntu-latest
     needs: 
         - job-one
         - job-two
+        - job-three
     name: PR Checker
     steps:
         - run: echo "pr is ok"
